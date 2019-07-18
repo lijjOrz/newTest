@@ -32,12 +32,15 @@ export default class Home extends Vue {
         let symbol = document.createElement("b");
 
         const p = e.srcElement;
-        p.style.transition = 'all 0.2s';
-        p.addEventListener("transitionend",async (e: any) : Promise<any> =>{ // 动画结束移除dom
+        p.style.transition = 'all 0.15s';
+        p.addEventListener("transitionend", (e) => { // 动画结束移除dom
             if(e.srcElement.style.letterSpacing == '6px'){
-                e.srcElement.style.letterSpacing =  await '1px';
-                this.lock = true;
+                e.srcElement.style.letterSpacing = '1px';
                 console.log('lock-----------', this.lock);
+                window.setTimeout(()=>{
+                    this.lock = true;
+                    console.log("setTimeout-+++++++++++", this.lock);
+                }, 150);
             }
         });//webKitTransitionEnd
 
@@ -49,8 +52,8 @@ export default class Home extends Vue {
         symbol.style.fontSize = "18px"; 
         symbol.style.color = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`; // 随机颜色
 		symbol.style.transition="all 1.5s";
-		symbol.addEventListener("transitionend",function(et){ // 动画结束移除dom
-			if(et.propertyName == "opacity" && et.srcElement.style.opacity=='0'){
+        symbol.addEventListener("transitionend",(et) => { // 动画结束移除dom
+			if(et.propertyName == "opacity" && et.srcElement["style"].opacity == '0'){
         		et.srcElement.remove();
             }
         });
