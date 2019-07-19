@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="home">
         <p @click="isShow($event)" style="letter-spacing: 1px">查看更多排名>></p>
         <transition
             name="zoomRight"
@@ -14,8 +14,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 require('vue2-animate/dist/vue2-animate.min.css');
 
-//   enter-active-class="bounceInDown"
-//   leave-active-class="bounceOutRight"
 @Component({
     components: {},
 
@@ -27,7 +25,6 @@ export default class Home extends Vue {
     private lock: boolean = true;
 
     private isShow(e: any){
-        // console.log('event-------', e);
         this.show = !this.show;
         let symbol = document.createElement("b");
 
@@ -36,13 +33,11 @@ export default class Home extends Vue {
         p.addEventListener("transitionend", (e) => { // 动画结束移除dom
             if(e.srcElement.style.letterSpacing == '6px'){
                 e.srcElement.style.letterSpacing = '1px';
-                console.log('lock-----------', this.lock);
                 window.setTimeout(()=>{
                     this.lock = true;
-                    console.log("setTimeout-+++++++++++", this.lock);
                 }, 150);
             }
-        });//webKitTransitionEnd
+        });
 
         symbol.style.position = "absolute";
 		symbol.style.left = (e.pageX - 10) + "px";
@@ -88,5 +83,9 @@ export default class Home extends Vue {
 </script>
 
 <style lang="scss" scoped>
-
+.home{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
 </style>
