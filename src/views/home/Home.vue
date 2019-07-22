@@ -6,7 +6,7 @@
         <div v-zoom>自定义指令1</div>
         <!-- <div v-drag>自定义指令2</div>
         <div v-drag>自定义指令3</div> -->
-        <p @click="isShow($event)"  v-zoom>查看更多排名>></p>
+        <p @click="isShow($event)" v-float>查看更多排名>></p>
         <transition
             name="zoomRight"
             >
