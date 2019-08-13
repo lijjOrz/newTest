@@ -6,7 +6,7 @@ Vue.directive('zoom', (el) => {
     let lockList = true;//监听事件锁
     var oDiv= el;
     var count = 0;
-    // console.log('绑定了指令', oDiv)
+    console.log('绑定了指令', oDiv)
 
     oDiv.onclick=function(ev){
         console.log("节点属性——————————————", ev)
@@ -58,7 +58,9 @@ Vue.directive('float', (e) => {
 		symbol.style.transition="all 1.5s";
         symbol.addEventListener("transitionend",(et) => { // 动画结束移除dom
 			if(et.propertyName == "opacity" && et.srcElement["style"].opacity == '0'){
-        		et.srcElement.remove(); //target
+                // et.srcElement.remove(); //target
+                // symbol.parentNode.removeChild(symbol);
+                symbol.remove();
             }
         });
  
@@ -92,3 +94,43 @@ Vue.directive('float', (e) => {
     
 });
 
+
+
+Vue.directive('button', (el) => {
+    let _lock = true;//过度动画锁
+    let lockList = true;//监听事件锁
+    var buttonEl = el;
+
+    buttonEl.style.boxShadow  = "0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3)";
+
+    buttonEl.onclick=function(ev){
+        let El = ev.srcElement;
+        El['style'].transition = 'all 0.1s';
+        
+        if(lockList){
+            lockList = false;
+            El.addEventListener("transitionend", function animateMe(e){ 
+                if(e.srcElement['style'].zoom == '0.95'){
+                    El['style'].zoom = '1';
+                    El['style'].boxShadow = "0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3)";
+                    // 删除监听
+                    El.removeEventListener("transitionend", animateMe);
+                    window.setTimeout(()=>{
+                        _lock = true;
+                        lockList = true;
+                    }, 100);
+                }
+            });
+        }
+        
+        requestAnimationFrame(()=>{
+            if(_lock){
+                El['style'].zoom = '0.95';
+                El['style'].boxShadow = '0 1px 1px 0 rgba(0, 0, 0, 0.14),0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px -1px rgba(0, 0, 0, 0.3)';//, 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 3px -1px rgba(0, 0, 0, 0.3)
+                _lock = false;
+            }
+        });
+
+
+    };
+});

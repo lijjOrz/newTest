@@ -7,6 +7,7 @@
             :msg="msg"
             @change="change"
         ></count>
+        
     </div>
 </template>
 
@@ -15,6 +16,8 @@
 import { Component, Vue } from 'vue-property-decorator';
 import count from '../components/count.vue';
 import Bus from '../../serve/utils/Bus';
+
+
 
 @Component({
     components: {

@@ -28,8 +28,9 @@ export default class Page_2 extends Vue {
 <style lang="scss" scoped>
 .page-2{
     width: 100%;
-    height: 300px;
+    height: 100%;
     border: 2px #000 solid;
+    // overflow: hidden;
 }
 .nav {
   padding: 30px;
