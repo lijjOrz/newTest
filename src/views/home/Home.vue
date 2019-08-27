@@ -30,10 +30,6 @@
             <div class="c3"></div>
         </div>
         <!-- 第三种水波 -->
-        <div class="container">
-            <div class="dot"></div>
-            <div class="wave3"></div>
-        </div>
 
     </div>
 </template>
@@ -179,58 +175,5 @@ html{
             }
         }
 
-//第三种水波
- .container{
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-  }
-  .dot{
-    position: absolute;
-    left: 15px;
-    top:15px;
-    width:6px;
-    height: 6px;
-    border-radius: 50%;
-  }
-  .wave3{
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    width: 24px;
-    height: 24px;
-    border: 6px solid red;
-    border-radius: 50%; 
-    opacity: 0;
-    animation: waveCircle 3s ease-out;
-    animation-iteration-count: infinite;
-  }
-  @-webkit-keyframes waveCircle {
-    0%{
-      transform: scale(0);
-      opacity: 0;
-    }
-    25%{
-      transform: scale(0.25);
-      opacity: 0.25;
-    }
-    45%{
-      transform: scale(0.45);
-      opacity: 0.45;
-    }
-    65%{
-      transform: scale(0.65);
-      opacity: 0.65;
-    }
-    85%{
-      transform: scale(0.85);
-      opacity: 0.85;
-    }
-    100%{
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
 
 </style>

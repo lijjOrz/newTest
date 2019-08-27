@@ -10,7 +10,7 @@ const page_2 = () => import("./views/page_2/Page_2.vue");
 const page_2_1 = () => import("./views/page_2_1/Page_2_1.vue");
 const page_2_2 = () => import("./views/page_2_2/Page_2_2.vue");
 
-const isComponent = () => import('./views/cmsss/isComponent.vue');
+const page_3 = () => import('./views/page_3/page_3.vue');
 
 Vue.use(Router);
 
@@ -44,8 +44,8 @@ export default new Router({
             ],
         },
         {
-            path: '/isComponent',
-            component: isComponent,
+            path: '/page_3',
+            component: page_3,
         },
         {
             path: '*', redirect: '/home',

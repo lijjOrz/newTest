@@ -19,11 +19,11 @@ Vue.directive('zoom', (el) => {
                 if(e.srcElement['style'].letterSpacing == '6px'){
                     console.log('执行回弹')
                     e.srcElement['style'].letterSpacing = '0px';
-                    p.removeEventListener("transitionend", animateMe);
                     window.setTimeout(()=>{
                         _lock = true;
                         lockList = true;
-                    }, 150);
+                        p.removeEventListener("transitionend", animateMe);
+                    }, 300);
                 }
             });
         }
@@ -114,11 +114,11 @@ Vue.directive('button', (el) => {
                     El['style'].zoom = '1';
                     El['style'].boxShadow = "0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3)";
                     // 删除监听
-                    El.removeEventListener("transitionend", animateMe);
                     window.setTimeout(()=>{
                         _lock = true;
                         lockList = true;
-                    }, 100);
+                        El.removeEventListener("transitionend", animateMe);
+                    }, 300);
                 }
             });
         }

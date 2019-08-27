@@ -7,7 +7,9 @@
             :msg="msg"
             @change="change"
         ></count>
-        
+        <p style="width: 100%; height: 40px; line-height: 40px;">
+            <i class="fa fa-cog fa-spin fa-5x fa-fw"></i>
+        </p>
     </div>
 </template>
 
@@ -16,7 +18,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import count from '../components/count.vue';
 import Bus from '../../serve/utils/Bus';
-
 
 
 @Component({
